@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Panel Empresa - Gestión de Supermercados e Invitaciones</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/admin.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <div class="container py-5">
+    <h1>Gestión de Supermercados</h1>
+    <a href="./registro.html" class="mb-3 d-inline-block">Registro de Usuarios</a>
+
+    <form id="form-supermercado" class="mb-4">
+      <input type="text" id="nombre" placeholder="Nombre del supermercado" class="form-control mb-2" required />
+      <input type="text" id="direccion" placeholder="Dirección" class="form-control mb-2" />
+      <input type="text" id="telefono" placeholder="Teléfono" class="form-control mb-2" />
+      <button type="submit" class="btn btn-primary">Agregar Supermercado</button>
+    </form>
+
+    <h3>Supermercados existentes</h3>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="tbody-supermercados"></tbody>
+    </table>
+
+    <hr />
+
+    <h2>Gestión de Invitaciones</h2>
+
+    <form id="form-invitacion" class="mb-4">
+      <select id="select-supermercado" class="form-select mb-2" required>
+        <option value="" disabled selected>Selecciona un supermercado</option>
+      </select>
+      <button type="submit" class="btn btn-success">Generar Invitación</button>
+    </form>
+
+    <div class="mb-3">
+  <label for="filtro-supermercado" class="form-label">Filtrar por Supermercado:</label>
+  <select id="filtro-supermercado" class="form-select" aria-label="Filtro supermercado">
+    <option value="" selected>Todos los supermercados</option>
+    <!-- Opciones cargadas dinámicamente -->
+  </select>
+</div>
+
+    <table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Supermercado</th>
+      <th>Dirección</th>
+      <th>Estado</th>
+      <th>Fecha de Uso</th>
+      <th>Usuario Registrado</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="tbody-invitaciones"></tbody>
+</table>
+  </div>
+
+  <!-- Modal Confirmación Eliminar Invitación -->
+<div class="modal fade" id="modalEliminarInvitacion" tabindex="-1" aria-labelledby="modalEliminarInvitacionLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="form-eliminar-invitacion">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEliminarInvitacionLabel">Confirmar Eliminación de Invitación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Vas a eliminar la invitación asociada al supermercado <strong><span id="invitar-supermercado-nombre"></span></strong>.</p>
+          <p>Esta acción no se puede deshacer.</p>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="checkbox-eliminar-invitacion" />
+            <label class="form-check-label" for="checkbox-eliminar-invitacion">
+              Estoy consciente de esta acción
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="input-eliminar-invitacion-confirmacion" class="form-label">Escribe "ELIMINAR" para confirmar:</label>
+            <input type="text" class="form-control" id="input-eliminar-invitacion-confirmacion" placeholder="Escribe aquí..." />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger" id="btn-eliminar-invitacion-confirmar" disabled>Eliminar Invitación</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal Confirmación Desactivar -->
+  <div class="modal fade" id="modalConfirmar" tabindex="-1" aria-labelledby="modalConfirmarLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form id="form-confirmacion">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalConfirmarLabel">Confirmar Desactivación</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+          <div class="modal-body">
+            <p>Estás a punto de desactivar el siguiente supermercado:</p>
+            <ul>
+              <li><strong>Nombre:</strong> <span id="modal-nombre"></span></li>
+              <li><strong>Dirección:</strong> <span id="modal-direccion"></span></li>
+              <li><strong>Teléfono:</strong> <span id="modal-telefono"></span></li>
+            </ul>
+            <p class="text-danger">
+              Esto afectará la visibilidad y acceso a este supermercado y sus ofertas.  
+              Por favor, confirma que eres consciente de estos cambios.
+            </p>
+            <div class="form-check mb-3">
+              <input class="form-check-input" type="checkbox" id="checkbox-consciente" />
+              <label class="form-check-label" for="checkbox-consciente">
+                Soy consciente de estos cambios
+              </label>
+            </div>
+            <div class="mb-3">
+              <label for="input-confirmacion" class="form-label">Escribe el nombre del supermercado para confirmar:</label>
+              <input type="text" class="form-control" id="input-confirmacion" placeholder="Escribe aquí..." />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-warning" id="btn-confirmar" disabled>Confirmar Desactivación</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmación Eliminar -->
+<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="form-eliminar">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalEliminarLabel">Confirmar Eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>Vas a eliminar el supermercado <strong><span id="eliminar-nombre"></span></strong>.</p>
+          <p>Esta acción eliminará todas las invitaciones asociadas y no se podrá deshacer.</p>
+          <p>Por favor, confirma que entiendes las consecuencias.</p>
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="checkbox-eliminar" />
+            <label class="form-check-label" for="checkbox-eliminar">
+              Estoy consciente de esta acción
+            </label>
+          </div>
+          <div class="mb-3">
+            <label for="input-eliminar-confirmacion" class="form-label">Escribe el nombre del supermercado para confirmar:</label>
+            <input type="text" class="form-control" id="input-eliminar-confirmacion" placeholder="Escribe aquí..." />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-danger" id="btn-eliminar-confirmar" disabled>Eliminar Supermercado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
