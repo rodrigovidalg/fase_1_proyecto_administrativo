@@ -1,20 +1,20 @@
 # Proyectos de la Plataforma de Ofertas
 
-## 1. Proyecto Usuario Final
+## 1. Proyecto Empresa (Administración Central) https://rodrigovidalg.github.io/fase_1_proyecto_administrativo/
 
 **Qué hace:**
-- Muestra el carrusel, ofertas activas, búsqueda, carrito, perfil, etc.
-- Solo lectura de datos (ofertas, supermercados, banners).
+- Control total del sistema.
+- Gestión de supermercados (crear, editar, eliminar).
+- Gestión de usuarios y roles (crear invitaciones, asignar roles).
+- Supervisión general y reportes.
 
 **Quién lo usa:**
-- Clientes/consumidores finales que buscan ofertas.
+- Personal de la empresa que administra la plataforma.
 
 **Tecnología:**
-- Frontend web o app móvil conectada a Firestore (solo lectura).
+- Panel administrativo con acceso completo y funciones avanzadas.
 
----
-
-## 2. Proyecto Supermercado (Panel de Gerentes/Encargados)
+## 2. Proyecto Supermercado (Panel de Gerentes/Encargados) https://rodrigovidalg.github.io/fase_2_proyecto_supermercado/
 
 **Qué hace:**
 - Permite a los gerentes de supermercados agregar, editar y eliminar sus ofertas.
@@ -29,16 +29,17 @@
 
 ---
 
-## 3. Proyecto Empresa (Administración Central)
+## 3. Proyecto Usuario Final https://rodrigovidalg.github.io/fase_3_proyecto_usuario_final/
 
 **Qué hace:**
-- Control total del sistema.
-- Gestión de supermercados (crear, editar, eliminar).
-- Gestión de usuarios y roles (crear invitaciones, asignar roles).
-- Supervisión general y reportes.
+- Muestra el carrusel, ofertas activas, búsqueda, carrito, perfil, etc.
+- Solo lectura de datos (ofertas, supermercados, banners).
 
 **Quién lo usa:**
-- Personal de la empresa que administra la plataforma.
+- Clientes/consumidores finales que buscan ofertas.
 
 **Tecnología:**
-- Panel administrativo con acceso completo y funciones avanzadas.
+- Frontend web o app móvil conectada a Firestore (solo lectura).
+
+---
+
