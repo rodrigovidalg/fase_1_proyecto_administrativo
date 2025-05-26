@@ -1,45 +1,65 @@
-# Proyectos de la Plataforma de Ofertas
+# Plataforma Web Ofertas Super
 
-## 1. Proyecto Empresa (Administración Central) https://rodrigovidalg.github.io/fase_1_proyecto_administrativo/
+## Descripción del Proyecto
 
-**Qué hace:**
-- Control total del sistema.
-- Gestión de supermercados (crear, editar, eliminar).
-- Gestión de usuarios y roles (crear invitaciones, asignar roles).
-- Supervisión general y reportes.
+Plataforma web diseñada para que supermercados puedan promocionar y vender productos próximos a su fecha de vencimiento a precios reducidos, minimizando pérdidas económicas y desperdicio de alimentos. Los usuarios pueden consultar ofertas, agregar productos al carrito y simular pagos en un entorno seguro y responsivo. El proyecto consta de tres módulos principales: administración central, panel de supermercados y frontend para usuarios finales.
 
-**Quién lo usa:**
-- Personal de la empresa que administra la plataforma.
+## Índice
 
-**Tecnología:**
-- Panel administrativo con acceso completo y funciones avanzadas.
+- [Descripción del Proyecto](#descripción-del-proyecto)  
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)  
+- [Módulos del Proyecto](#módulos-del-proyecto)  
+- [Estado del Proyecto](#estado-del-proyecto)  
+- [Futuras Mejoras](#futuras-mejoras)  
+- [Colaboración](#colaboración)  
+- [Contacto](#contacto)
 
-## 2. Proyecto Supermercado (Panel de Gerentes/Encargados) https://rodrigovidalg.github.io/fase_2_proyecto_supermercado/
+## Tecnologías Utilizadas
 
-**Qué hace:**
-- Permite a los gerentes de supermercados agregar, editar y eliminar sus ofertas.
-- Acceso controlado mediante autenticación y roles (editor).
-- Solo puede gestionar las ofertas de su supermercado (filtrado por `supermercadoId`).
+- HTML5, CSS3 y JavaScript para la interfaz y lógica del cliente.  
+- Bootstrap para diseño responsivo y componentes UI.  
+- Firebase Authentication para gestión segura de usuarios.  
+- Firebase Firestore para almacenamiento y consulta en tiempo real.  
+- Git y GitHub para control de versiones y colaboración.
 
-**Quién lo usa:**
-- Gerentes o encargados del supermercado.
+## Módulos del Proyecto
 
-**Tecnología:**
-- Panel web privado con autenticación y permisos limitados.
+### 1. Proyecto Empresa (Administración Central)  
+- Control total del sistema.  
+- Gestión de supermercados, usuarios y roles.  
+- Supervisión.  
+- URL: https://rodrigovidalg.github.io/fase_1_proyecto_administrativo/
 
----
+### 2. Proyecto Supermercado (Panel de Gerentes/Encargados)  
+- Gestión de ofertas propias del supermercado.  
+- Acceso controlado por autenticación.  
+- URL: https://rodrigovidalg.github.io/fase_2_proyecto_supermercado/
 
-## 3. Proyecto Usuario Final https://rodrigovidalg.github.io/fase_3_proyecto_usuario_final/
+### 3. Proyecto Usuario Final  
+- Visualización de ofertas activas, carrito y perfil.  
+- Lectura de datos para clientes finales.  
+- URL: https://rodrigovidalg.github.io/fase_3_proyecto_usuario_final/
 
-**Qué hace:**
-- Muestra el carrusel, ofertas activas, búsqueda, carrito, perfil, etc.
-- Solo lectura de datos (ofertas, supermercados, banners).
+## Estado del Proyecto
 
-**Quién lo usa:**
-- Clientes/consumidores finales que buscan ofertas.
+Actualmente, la plataforma está funcional con registro e inicio de sesión, gestión de ofertas, carrito de compras y simulación de pago. Algunas funcionalidades avanzadas, como facturación electrónica y métodos de pago reales, están en desarrollo.
 
-**Tecnología:**
-- Frontend web o app móvil conectada a Firestore (solo lectura).
+## Futuras Mejoras
 
----
+- Integrar pasarelas de pago reales.  
+- Automatizar envío de facturas electrónicas.  
+- Desarrollar aplicación móvil complementaria.  
+- Mejorar análisis estadístico y reportes para supermercados.
 
+## Colaboración
+
+Contribuciones son bienvenidas. Para colaborar:  
+- Crear un fork del repositorio.  
+- Realizar cambios en una rama separada.  
+- Enviar pull request con descripción clara de las modificaciones.
+
+## Contacto
+
+- [WhatsApp](https://chat.whatsapp.com/KJmsQhqLFBx6r7LJfT6XPV)  
+- [+502 5019 6856](tel:+50250196856)  
+- [NexTech Solucions](https://bit.ly/NexTexh_solucions)
